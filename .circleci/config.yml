@@ -35,7 +35,7 @@ jobs:
     steps:
       - checkout
       - run:
-         name: build
+         name: build chmod permission
          command: chmod +x ./scripts/build.sh
      
       - run:
@@ -48,7 +48,7 @@ jobs:
     steps:
       - checkout
       - run:
-         name: deploy
+         name: deploy chmod permission
          command: chmod +x ./scripts/deploy.sh
       
       - run:
@@ -61,7 +61,7 @@ jobs:
     steps:
       - checkout
       - run:
-         name: test
+         name: test chmod permission
          command: chmod +x ./scripts/test.sh
       
       - run:
@@ -91,6 +91,4 @@ workflows:
       - deploy:
           requires:
             - hold
-          filters:
-            branches:
-              only: master
+       

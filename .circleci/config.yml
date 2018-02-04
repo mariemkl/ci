@@ -18,3 +18,11 @@ jobs:
       - run:
           name: build the maven project
           command: ./scripts/build.sh
+      
+      - run:
+         name: give chmod permission
+         command: chmod +x ./scripts/test.sh 
+         
+      - run:
+          name: test the maven project
+          command: ./scripts/test.sh 

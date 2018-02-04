@@ -11,7 +11,7 @@ jobs:
 
       - checkout
       
-       - run:
+      - run:
          name: give chmod permission
          command: chmod +x ./scripts/build.sh
       

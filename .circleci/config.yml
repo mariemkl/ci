@@ -12,7 +12,7 @@ jobs:
       - checkout
       
       - run:
-         name: give chmod permission
+         name: give chmod permission to build
          command: chmod +x ./scripts/build.sh
       
       - run:
@@ -20,9 +20,17 @@ jobs:
           command: ./scripts/build.sh
       
       - run:
-         name: give chmod permission
+         name: give chmod permission to test
          command: chmod +x ./scripts/test.sh 
          
       - run:
           name: test the maven project
           command: ./scripts/test.sh 
+          
+      - run:
+         name: give chmod permission to deploy
+         command: chmod +x ./scripts/deploy.sh 
+         
+      - run:
+          name: test the maven project
+          command: ./scripts/deploy.sh 

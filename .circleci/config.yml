@@ -11,6 +11,10 @@ jobs:
 
       - checkout
       
+       - run:
+         name: give chmod permission
+         command: chmod +x ./scripts/build.sh
+      
       - run:
           name: build the maven project
           command: ./scripts/build.sh

@@ -10,21 +10,7 @@ jobs:
     steps:
 
       - checkout
-
-      - restore_cache:
-          key: ci-{{ checksum "pom.xml" }}
       
-      - run: mvn dependency:go-offline
-      
-      - save_cache:
-          paths:
-            - ~/.m2
-          key: ci-{{ checksum "pom.xml" }}
-      
-      - run: mvn package
-      
-      - store_test_results:
-          path: target/surefire-reports
-      
-      - store_artifacts:
-          path: target/ci-SNAPSHOT.jar
+      - run:
+          name: build the maven project
+          command: ./scripts/build.sh

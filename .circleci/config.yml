@@ -48,8 +48,10 @@ jobs:
           
           
 workflows:
+  workflows:
   version: 2
-     jobs:
-       - build
-       - test
-       - deploy
+  build_test_deploy:
+        jobs:
+          - build
+          - test
+          - deploy

@@ -18,7 +18,12 @@ jobs:
       - run:
           name: build the maven project
           command: ./scripts/build.sh
+          
+  test:   
+    docker:
+      - image: circleci/openjdk:8-jdk
       
+    steps:
       - run:
          name: give chmod permission to test
          command: chmod +x ./scripts/test.sh 
@@ -27,10 +32,23 @@ jobs:
           name: test the maven project
           command: ./scripts/test.sh 
           
+  deploy:        
+    docker:
+    
+      - image: circleci/openjdk:8-jdk
+     
+    steps:
       - run:
          name: give chmod permission to deploy
          command: chmod +x ./scripts/deploy.sh 
          
       - run:
-          name: test the maven project
+          name: deploy the maven project
           command: ./scripts/deploy.sh 
+          
+          
+ workflows:
+    version: 2
+       - build
+       - test
+       - deploy

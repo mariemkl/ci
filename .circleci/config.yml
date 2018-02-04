@@ -19,7 +19,8 @@ jobs:
           name: build the maven project
           command: ./scripts/build.sh
           
-  test:   
+  test: 
+    working_directory: ~/ci
     docker:
       - image: circleci/openjdk:8-jdk
       
@@ -32,7 +33,8 @@ jobs:
           name: test the maven project
           command: ./scripts/test.sh 
           
-  deploy:        
+  deploy:  
+    working_directory: ~/ci
     docker:
     
       - image: circleci/openjdk:8-jdk

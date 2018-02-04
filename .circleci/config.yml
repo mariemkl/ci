@@ -1,52 +1,44 @@
 version: 2
 jobs:
-  build:
-    
-    working_directory: ~/ci
-
+   build:
     docker:
-      - image: circleci/openjdk:8-jdk-browsers
-
+      - image: circleci/openjdk:8-jdk
     steps:
-
       - checkout
-      
       - run:
-         name: give chmod permission to build
+         name: build
          command: chmod +x ./scripts/build.sh
-      
+     
       - run:
           name: build the maven project
           command: ./scripts/build.sh
-          
-  test: 
-    working_directory: ~/ci
+
+  deploy:
     docker:
       - image: circleci/openjdk:8-jdk
+    steps:
+      - checkout
+      - run:
+         name: deploy
+         command: chmod +x ./scripts/deploy.sh
       
-    steps:
-      - run:
-         name: give chmod permission to test
-         command: chmod +x ./scripts/test.sh 
-         
-      - run:
-          name: test the maven project
-          command: ./scripts/test.sh 
-          
-  deploy:  
-    working_directory: ~/ci
-    docker:
-    
-      - image: circleci/openjdk:8-jdk
-     
-    steps:
-      - run:
-         name: give chmod permission to deploy
-         command: chmod +x ./scripts/deploy.sh 
-         
       - run:
           name: deploy the maven project
-          command: ./scripts/deploy.sh 
+          command: ./scripts/deploy.sh
+          
+  test:
+    docker:
+      - image: circleci/openjdk:8-jdk
+    steps:
+      - checkout
+      - run:
+         name: test
+         command: chmod +x ./scripts/test.sh
+      
+      - run:
+         name: test the maven project
+         command: ./scripts/test.sh
+         
           
           
 

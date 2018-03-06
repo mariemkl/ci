@@ -30,6 +30,7 @@ public class TestGraph {
 
 		Vertice v = new Vertice<String>("v1");
 		g1.addVertice(v);
+		assertTrue(false);
 		assertEquals(1, g1.getVerticesSize());
 
 	}
